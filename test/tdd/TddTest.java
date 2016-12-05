@@ -69,8 +69,9 @@ public class TddTest {
     @Test
     public void buyingProducts()
     {
+        client.purchase.add(product);
         client.buy();
         
-        assertEquals(client.cash, 150.1, 0);
+        assertEquals(50.03, client.cash, 0);
     }
 }

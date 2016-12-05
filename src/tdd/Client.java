@@ -27,6 +27,13 @@ public class Client {
     
     public void buy()
     {
+        double price = 0;
         
+        for(Product p : this.purchase.products)
+        {
+            price += p.price * p.quantity;
+        }
+        
+        this.cash -= price;
     }
 }
