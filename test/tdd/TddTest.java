@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tdd;
 
 import org.junit.After;
@@ -36,12 +31,6 @@ public class TddTest {
     @After
     public void tearDown() {
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
     
     @Test
     public void creatingProduct()
@@ -51,5 +40,13 @@ public class TddTest {
         assertEquals(product.name, "Koszulka");
         assertEquals(product.price, 49.99, 0);
         assertEquals(product.quantity, 3);
+    }
+    
+    @Test
+    public void creatingPurchase()
+    {
+        Purchase purchase = new Purchase();
+        
+        assertNotNull(purchase);
     }
 }
