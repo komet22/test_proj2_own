@@ -133,4 +133,34 @@ public class TddTest {
         
         assertEquals(10, client.extraPoints);
     }
+    
+    @Test
+    public void NoExtraPointsExceptionTest()
+    {
+        client.addExtraPoints(20);
+        client.addProduct(productB);
+        try {
+            client.buyWithPoints();
+        } catch (NoExtraPoints e) {
+            e.printStackTrace();
+            System.out.println("Wyjątek NoMoney został złapany");
+        } catch (NoProducts e) {
+            e.printStackTrace();
+            System.out.println("Wyjątek NoProducts został złapany");
+        }
+    }
+    
+    @Test
+    public void NoProductsExtraExceptionTest()
+    {
+        try {
+            client.buyWithPoints();
+        } catch (NoExtraPoints e) {
+            e.printStackTrace();
+            System.out.println("Wyjątek NoMoney został złapany");
+        } catch (NoProducts e) {
+            e.printStackTrace();
+            System.out.println("Wyjątek NoProducts został złapany");
+        }
+    }
 }
