@@ -26,6 +26,6 @@ public class Purchase {
     
     public void remove(Product product)
     {
-        
+        this.products.remove(product);
     }
 }
