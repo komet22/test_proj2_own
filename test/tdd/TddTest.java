@@ -23,7 +23,6 @@ public class TddTest {
         client = new Client("Paweł", "Jaruga", "pawel.jaruga@o2.pl", 200);
         
     }
-
     
     @Test
     public void creatingProduct()

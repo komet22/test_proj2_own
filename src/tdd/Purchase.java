@@ -28,4 +28,16 @@ public class Purchase {
     {
         this.products.remove(product);
     }
+    
+    public double getPrice()
+    {
+        double price = 0;
+        
+        for(Product p : this.products)
+        {
+            price += p.price * p.quantity;
+        }
+        
+        return price;
+    }
 }
