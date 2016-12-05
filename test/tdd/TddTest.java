@@ -49,4 +49,16 @@ public class TddTest {
         
         assertNotNull(purchase);
     }
+    
+    @Test
+    public void addingProductToPurchase()
+    {
+        Purchase purchase = new Purchase();
+        Product product = new Product("Koszulka", 49.99, 3);
+        
+        product.add(purchase);
+        
+        assertTrue(purchase.products.contains(product));
+        
+    }
 }
