@@ -12,13 +12,15 @@ import static org.junit.Assert.*;
  * @author Paweł
  */
 public class TddTest {
-    Product product;
+    Product productA;
+    Product productB;
     Purchase purchase;
     Client client;
         
     @Before
     public void setUp() {
-        product = new Product("Koszulka", 49.99, 3);
+        productA = new Product("Koszulka", 49.99, 3);
+        productB = new Product("Buty", 60, 4);
         purchase = new Purchase();
         client = new Client("Paweł", "Jaruga", "pawel.jaruga@o2.pl", 200);
         
@@ -27,9 +29,9 @@ public class TddTest {
     @Test
     public void creatingProduct()
     {      
-        assertEquals(product.name, "Koszulka");
-        assertEquals(product.price, 49.99, 0);
-        assertEquals(product.quantity, 3);
+        assertEquals(productA.name, "Koszulka");
+        assertEquals(productA.price, 49.99, 0);
+        assertEquals(productA.quantity, 3);
     }
     
     @Test
@@ -41,19 +43,19 @@ public class TddTest {
     @Test
     public void addingProductToPurchase()
     {
-        purchase.add(product);
+        purchase.add(productA);
         
-        assertTrue(purchase.products.contains(product));
+        assertTrue(purchase.products.contains(productA));
         
     }
     
     @Test
     public void removingProductFromPurchase()
     {
-        purchase.add(product);
-        purchase.remove(product);
+        purchase.add(productA);
+        purchase.remove(productA);
         
-        assertFalse(purchase.products.contains(product));
+        assertFalse(purchase.products.contains(productA));
     }
     
     @Test
@@ -65,12 +67,42 @@ public class TddTest {
         assertEquals(client.cash, 200, 0);
     }
     
+    //Nieaktyalny od iteracji 7 - brak złapanego wyjątku
     @Test
     public void buyingProducts()
     {
-        client.purchase.add(product);
+        client.purchase.add(productA);
         client.buy();
         
         assertEquals(50.03, client.cash, 0);
+    }
+    
+        @Test
+    public void NoProductsExceptionTest()
+    {
+        try {
+            client.buy();
+        } catch (NoMoney e) {
+            e.printStackTrace();
+            System.out.println("Wyjątek NoMoney został złapany");
+        } catch (NoProducts e) {
+            e.printStackTrace();
+            System.out.println("Wyjątek NoProducts został złapany");
+        }
+    }
+    
+    @Test
+    public void NoMoneyExceptionTest()
+    {
+        client.purchase.add(productB);
+        try {
+            client.buy();
+        } catch (NoMoney e) {
+            e.printStackTrace();
+            System.out.println("Wyjątek NoMoney został złapany");
+        } catch (NoProducts e) {
+            e.printStackTrace();
+            System.out.println("Wyjątek NoProducts został złapany");
+        }
     }
 }
