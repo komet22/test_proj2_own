@@ -23,4 +23,9 @@ public class Purchase {
     {
         this.products.add(product);
     }
+    
+    public void remove(Product product)
+    {
+        
+    }
 }

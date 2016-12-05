@@ -44,4 +44,13 @@ public class TddTest {
         assertTrue(purchase.products.contains(product));
         
     }
+    
+    @Test
+    public void removingProductFromPurchase()
+    {
+        purchase.add(product);
+        purchase.remove(product);
+        
+        assertFalse(purchase.products.contains(product));
+    }
 }
