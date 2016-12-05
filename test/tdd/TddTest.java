@@ -71,13 +71,13 @@ public class TddTest {
     @Test
     public void buyingProducts()
     {
-        client.purchase.add(productA);
+        client.addProduct(productA);
         client.buy();
         
         assertEquals(50.03, client.cash, 0);
     }
     
-        @Test
+    @Test
     public void NoProductsExceptionTest()
     {
         try {
@@ -94,7 +94,7 @@ public class TddTest {
     @Test
     public void NoMoneyExceptionTest()
     {
-        client.purchase.add(productB);
+        client.addProduct(productB);
         try {
             client.buy();
         } catch (NoMoney e) {
@@ -105,4 +105,6 @@ public class TddTest {
             System.out.println("Wyjątek NoProducts został złapany");
         }
     }
+    
+    
 }
