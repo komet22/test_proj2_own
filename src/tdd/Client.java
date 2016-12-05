@@ -64,10 +64,19 @@ public class Client {
         }
     }
     
-    public void buyWithPoints()
+    public void buyWithPoints() throws NoExtraPoints, NoProducts
     {
-        int price = this.purchase.getExtraPrice();
-        this.removeExtraPoints(price);
-        this.purchase = new Purchase();
+        if(this.purchase.products.isEmpty())
+            throw new NoProducts();
+        else
+        {
+            int price = this.purchase.getExtraPrice();
+            if(price > this.extraPoints)
+                throw new NoExtraPoints();
+            else {
+                this.removeExtraPoints(price);
+                this.purchase = new Purchase();
+            }
+        }
     }
 }
