@@ -106,5 +106,20 @@ public class TddTest {
         }
     }
     
-    
+    @Test
+    public void addingExtraPoints()
+    {
+        client.addProduct(productA);
+        try {
+            client.buy();
+        } catch (NoMoney e) {
+            e.printStackTrace();
+            System.out.println("Wyjątek NoMoney został złapany");
+        } catch (NoProducts e) {
+            e.printStackTrace();
+            System.out.println("Wyjątek NoProducts został złapany");
+        }
+        
+        assertEquals(client.extraPoints, 10);
+    }
 }
