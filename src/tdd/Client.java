@@ -47,7 +47,7 @@ public class Client {
         this.extraPoints -= i;
     }
     
-    public void buy() throws NoMoney, NoProducts
+    public void buyWithCash() throws NoMoney, NoProducts
     {
         if(this.purchase.products.isEmpty())
             throw new NoProducts();
