@@ -14,11 +14,14 @@ import static org.junit.Assert.*;
 public class TddTest {
     Product product;
     Purchase purchase;
+    Client client;
         
     @Before
     public void setUp() {
         product = new Product("Koszulka", 49.99, 3);
         purchase = new Purchase();
+        client = new Client("Paweł", "Jaruga", "pawel.jaruga@o2.pl", 1000);
+        
     }
 
     
@@ -57,8 +60,6 @@ public class TddTest {
     @Test
     public void creatingClient()
     {
-        Client client = new Client("Paweł", "Jaruga", "pawel.jaruga@o2.pl", 1000);
-        
         assertEquals(client.firstName, "Paweł");
         assertEquals(client.lastName, "Jaruga");
         assertEquals(client.email, "pawel.jaruga@o2.pl");
