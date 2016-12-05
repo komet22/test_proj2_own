@@ -14,6 +14,7 @@ public class Client {
     String lastName;
     String email;
     double cash;
+    int extraPoints;
     Purchase purchase;
     
     public Client(String fname, String lname, String email, double cash)
@@ -22,7 +23,8 @@ public class Client {
         this.lastName = lname;
         this.email = email;
         this.cash = cash;
-        purchase = new Purchase();
+        this.purchase = new Purchase();
+        this.extraPoints = 0;
     }
     
     public void addProduct(Product product)
@@ -46,6 +48,7 @@ public class Client {
                 throw new NoMoney();
             else {
                 this.cash -= price;
+                this.extraPoints += (int)price/10;
                 this.purchase = new Purchase();
             }
         }
