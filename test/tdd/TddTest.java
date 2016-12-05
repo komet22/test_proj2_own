@@ -53,4 +53,12 @@ public class TddTest {
         
         assertFalse(purchase.products.contains(product));
     }
+    
+    @Test
+    public void creatingClient()
+    {
+        Client client = new Client();
+        
+        assertNotNull(client);
+    }
 }
