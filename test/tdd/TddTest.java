@@ -53,4 +53,15 @@ public class TddTest {
         
         assertFalse(purchase.products.contains(product));
     }
+    
+    @Test
+    public void creatingClient()
+    {
+        Client client = new Client("Paweł", "Jaruga", "pawel.jaruga@o2.pl", 1000);
+        
+        assertEquals(client.firstName, "Paweł");
+        assertEquals(client.lastName, "Jaruga");
+        assertEquals(client.email, "pawel.jaruga@o2.pl");
+        assertEquals(client.cash, 1000, 0);
+    }
 }
