@@ -56,7 +56,7 @@ public class TddTest {
         Purchase purchase = new Purchase();
         Product product = new Product("Koszulka", 49.99, 3);
         
-        product.add(purchase);
+        purchase.add(product);
         
         assertTrue(purchase.products.contains(product));
         

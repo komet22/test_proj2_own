@@ -18,4 +18,9 @@ public class Purchase {
     {
         products = new HashSet<>();
     }
+    
+    public void add(Product product)
+    {
+        this.products.add(product);
+    }
 }
