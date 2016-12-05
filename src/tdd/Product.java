@@ -12,12 +12,14 @@ package tdd;
 public class Product {
     String name;
     double price;
+    int extraPointPrice;
     int quantity;
     
-    public Product(String name, double price, int quantity)
+    public Product(String name, double price, int extraPrice, int quantity)
     {
         this.name = name;
         this.price = price;
+        this.extraPointPrice = extraPrice;
         this.quantity = quantity;
     }
 }

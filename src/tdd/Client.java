@@ -62,4 +62,12 @@ public class Client {
                 this.purchase = new Purchase();
             }
         }
+    }
+    
+    public void buyWithPoints()
+    {
+        int price = this.purchase.getExtraPrice();
+        this.removeExtraPoints(price);
+        this.purchase = new Purchase();
+    }
 }

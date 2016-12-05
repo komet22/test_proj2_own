@@ -40,4 +40,16 @@ public class Purchase {
         
         return price;
     }
+    
+    public int getExtraPrice()
+    {
+        int price = 0;
+        
+        for(Product p : this.products)
+        {
+            price += p.extraPointPrice * p.quantity;
+        }
+        
+        return price;
+    }
 }
