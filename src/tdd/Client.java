@@ -25,9 +25,17 @@ public class Client {
         purchase = new Purchase();
     }
     
-    public void buy()
-    {   
-        this.cash -= this.purchase.getPrice();
-        this. purchase = new Purchase();
+    public void buy() throws NoMoney, NoProducts
+    {
+        if(this.purchase.products.isEmpty())
+            throw new NoProducts();
+        else
+        {
+            double price = this.purchase.getPrice();
+            if(price > this.cash)
+                throw new NoMoney();
+            else
+                this.purchase = new Purchase();
+        }
     }
 }
