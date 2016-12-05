@@ -19,8 +19,8 @@ public class TddTest {
         
     @Before
     public void setUp() {
-        productA = new Product("Koszulka", 49.99, 3);
-        productB = new Product("Buty", 60, 4);
+        productA = new Product("Koszulka", 49.99, 10, 3);
+        productB = new Product("Buty", 60, 12, 4);
         purchase = new Purchase();
         client = new Client("Paweł", "Jaruga", "pawel.jaruga@o2.pl", 200);
         
@@ -121,5 +121,16 @@ public class TddTest {
         }
         
         assertEquals(client.extraPoints, 14);
+    }
+    
+    @Test
+    public void buyingProductsWithExtraPoints()
+    {
+        client.addProduct(productA);
+        client.addExtraPoints(40);
+        
+        client.buyWithPoints();
+        
+        assertEquals(10, client.extraPoints);
     }
 }
