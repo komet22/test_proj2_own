@@ -24,4 +24,9 @@ public class Client {
         this.cash = cash;
         purchase = new Purchase();
     }
+    
+    public void buy()
+    {
+        
+    }
 }

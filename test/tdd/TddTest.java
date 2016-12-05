@@ -20,7 +20,7 @@ public class TddTest {
     public void setUp() {
         product = new Product("Koszulka", 49.99, 3);
         purchase = new Purchase();
-        client = new Client("Paweł", "Jaruga", "pawel.jaruga@o2.pl", 1000);
+        client = new Client("Paweł", "Jaruga", "pawel.jaruga@o2.pl", 200);
         
     }
 
@@ -63,6 +63,14 @@ public class TddTest {
         assertEquals(client.firstName, "Paweł");
         assertEquals(client.lastName, "Jaruga");
         assertEquals(client.email, "pawel.jaruga@o2.pl");
-        assertEquals(client.cash, 1000, 0);
+        assertEquals(client.cash, 200, 0);
+    }
+    
+    @Test
+    public void buyingProducts()
+    {
+        client.buy();
+        
+        assertEquals(client.cash, 150.1, 0);
     }
 }
