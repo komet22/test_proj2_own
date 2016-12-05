@@ -42,4 +42,14 @@ public class TddTest {
     //
     // @Test
     // public void hello() {}
+    
+    @Test
+    public void creatingProduct()
+    {
+        Product product = new Product("Koszulka", 49.99, 3);
+        
+        assertEquals(product.name, "Koszulka");
+        assertEquals(product.price, "49.99");
+        assertEquals(product.quantity, 3);
+    }
 }
