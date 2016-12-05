@@ -49,7 +49,7 @@ public class TddTest {
         Product product = new Product("Koszulka", 49.99, 3);
         
         assertEquals(product.name, "Koszulka");
-        assertEquals(product.price, "49.99");
+        assertEquals(product.price, 49.99, 0);
         assertEquals(product.quantity, 3);
     }
 }
