@@ -120,6 +120,6 @@ public class TddTest {
             System.out.println("Wyjątek NoProducts został złapany");
         }
         
-        assertEquals(client.extraPoints, 10);
+        assertEquals(client.extraPoints, 14);
     }
 }

@@ -37,6 +37,16 @@ public class Client {
         this.purchase.remove(product);
     }
     
+    public void addExtraPoints(int i)
+    {
+        this.extraPoints += i;
+    }
+    
+    public void removeExtraPoints(int i)
+    {
+        this.extraPoints -= i;
+    }
+    
     public void buy() throws NoMoney, NoProducts
     {
         if(this.purchase.products.isEmpty())
@@ -48,7 +58,7 @@ public class Client {
                 throw new NoMoney();
             else {
                 this.cash -= price;
-                this.extraPoints += (int)price/10;
+                this.addExtraPoints((int)price/10);
                 this.purchase = new Purchase();
             }
         }
