@@ -138,18 +138,18 @@ public class TddTest {
         assertEquals(34, client.extraPoints, 0);
     }
     
-    @Test
+    @Test (expected=NoProducts.class)
     public void buyMixedNoProducts() {
        client.buyMixed();
     }
     
-    @Test
+    @Test (expected=NoMoney.class)
     public void buyMixedNoMoney() {
        client.addCashProduct(productC);
        client.buyMixed();
     }
     
-    @Test
+    @Test (expected=NoExtraPoints.class)
     public void buyMixedNoExtraPoints() {
        client.addExtraProduct(productC);
        client.buyMixed();

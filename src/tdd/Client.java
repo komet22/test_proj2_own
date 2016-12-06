@@ -93,11 +93,20 @@ public class Client {
     }
     
     public void buyMixed() {
-        try {
+        if(this.currentPurchase.productsExtra.isEmpty() &&
+                this.currentPurchase.productsCash.isEmpty())
+            throw new NoProducts();
+        
+        if (!this.currentPurchase.productsCash.isEmpty()) {
+            if (this.currentPurchase.getPrice() > this.cash)
+                throw new NoMoney();
             buyWithCash();
-            buyWithPoints();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-    }
+        
+        if (!this.currentPurchase.productsExtra.isEmpty()) {
+            if (this.currentPurchase.getExtraPrice() > this.extraPoints)
+                throw new NoExtraPoints();
+            buyWithPoints();
+        }
+    }    
 }
