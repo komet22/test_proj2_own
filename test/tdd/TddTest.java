@@ -161,4 +161,17 @@ public class TddTest {
         client.buyWithCash();
         assertEquals(25.0, client.cash, 0.0);
     }
+    
+    @Test
+    public void printProductDescription() {
+        String expectedResult = "Product name: Buty\n"
+            +               "Price: 60,00\n"
+            +               "ExtraPointPrice: 12\n"
+            +               "Quantity: 4\n"
+            +               "Bargain: 0.0";
+        String result = productB.printProductDescription();
+        assertEquals(expectedResult, result);
+    }
+
+
 }
