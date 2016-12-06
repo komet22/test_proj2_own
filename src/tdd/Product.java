@@ -24,4 +24,12 @@ public class Product {
         this.quantity = quantity;
         this.bargain = bargain;
     }
+    
+    public String printProductDescription(){
+        return "Product name: " + name + "\n"
+            +  "Price: " + String.format("%.02f", price) + "\n"
+            +  "ExtraPointPrice: " + extraPointPrice + "\n"
+            +  "Quantity: " + quantity + "\n" 
+            +  "Bargain: " + bargain;
+    }   
 }

@@ -162,6 +162,7 @@ public class TddTest {
         assertEquals(25.0, client.cash, 0.0);
     }
     
+    // NIEAKTUALNE ZAMIENIONE NA WIERTARE
     @Test
     public void printProductDescription() {
         String expectedResult = "Product name: Buty\n"
@@ -172,6 +173,19 @@ public class TddTest {
         String result = productB.printProductDescription();
         assertEquals(expectedResult, result);
     }
-
+    
+    
+    // Zamienone w wym 14
+    @Test
+    public void printProductDescription2() {
+        String expectedResult = "Product name: Wiertarka na przecenie\n"
+            +               "Price: 350,00\n"
+            +               "ExtraPointPrice: 5\n"
+            +               "Quantity: 1\n"
+            +               "Bargain: 0.5";
+        Product p = new Product("Wiertarka na przecenie", 350, 5, 1, 0.5);
+        String result = p.printProductDescription();
+        assertEquals(expectedResult, result);
+    }
 
 }
