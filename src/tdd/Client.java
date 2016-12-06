@@ -57,7 +57,8 @@ public class Client {
             throw new NoMoney();
 
         this.cash -= price;
-        this.addExtraPoints((int)price/10);
+        if(price >= 50)
+            this.addExtraPoints((int)price/10);
         this.purchase = new Purchase();
 
     }
