@@ -41,6 +41,26 @@ public class Purchase {
         this.productsExtra.remove(product);
     }
     
+    public HashSet getCashProducts()
+    {
+        return this.productsCash;
+    }
+    
+    public void setCashProducts(HashSet set)
+    {
+        this.productsCash = set;
+    }
+    
+    public HashSet getExtraProducts()
+    {
+        return this.productsExtra;
+    }
+    
+    public void setExtraProducts(HashSet set)
+    {
+        this.productsExtra = set;
+    }
+    
     public double getPrice()
     {
         double price = 0;

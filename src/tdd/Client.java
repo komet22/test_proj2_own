@@ -5,6 +5,8 @@
  */
 package tdd;
 
+import java.util.HashSet;
+import java.util.ArrayList;
 /**
  *
  * @author Peasant
@@ -16,6 +18,7 @@ public class Client {
     double cash;
     int extraPoints;
     Purchase currentPurchase;
+    ArrayList<HashSet> previousPurchases;
     
     public Client(String fname, String lname, String email, double cash)
     {
@@ -25,6 +28,7 @@ public class Client {
         this.cash = cash;
         this.currentPurchase = new Purchase();
         this.extraPoints = 0;
+        this.previousPurchases = new ArrayList<>();
     }
     
     public void addCashProduct(Product product)
@@ -69,7 +73,8 @@ public class Client {
         this.cash -= price;
         if(price >= 50)
             this.addExtraPoints((int)price/10);
-        this.currentPurchase = new Purchase();
+        this.previousPurchases.add(currentPurchase.getCashProducts());
+        this.currentPurchase.setCashProducts(new HashSet<Product>());
 
     }
     
@@ -83,6 +88,7 @@ public class Client {
             throw new NoExtraPoints();
 
         this.removeExtraPoints(price);
-        this.currentPurchase = new Purchase();
+        this.previousPurchases.add(currentPurchase.getExtraProducts());
+        this.currentPurchase.setExtraProducts(new HashSet<Product>());
     }
 }
