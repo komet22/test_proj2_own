@@ -137,4 +137,21 @@ public class TddTest {
         assertEquals(50.03, client.cash, 0.0);
         assertEquals(34, client.extraPoints, 0);
     }
+    
+    @Test
+    public void buyMixedNoProducts() {
+       client.buyMixed();
+    }
+    
+    @Test
+    public void buyMixedNoMoney() {
+       client.addCashProduct(productC);
+       client.buyMixed();
+    }
+    
+    @Test
+    public void buyMixedNoExtraPoints() {
+       client.addExtraProduct(productC);
+       client.buyMixed();
+    }
 }
