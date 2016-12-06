@@ -74,7 +74,7 @@ public class Client {
         if(price >= 50)
             this.addExtraPoints((int)price/10);
         this.previousPurchases.add(currentPurchase.getCashProducts());
-        this.currentPurchase.setCashProducts(new HashSet<Product>());
+        this.currentPurchase.setCashProducts(new HashSet<>());
 
     }
     

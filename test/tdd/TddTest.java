@@ -68,14 +68,14 @@ public class TddTest {
     }
     
     //Nieaktyalny od iteracji 7 - brak złapanego wyjątku
-    @Test
+    /*@Test
     public void buyingProducts()
     {
         client.addCashProduct(productA);
         client.buyWithCash();
         
         assertEquals(50.03, client.cash, 0);
-    }
+    }*/
     
     @Test
     public void noProductsExceptionTest()
@@ -124,7 +124,7 @@ public class TddTest {
     }
     
     //Nieaktualne od iteracji 10 - nieobsługiwane wyjątki
-    @Test
+    /*@Test
     public void buyingProductsWithExtraPoints()
     {
         client.addExtraProduct(productA);
@@ -133,7 +133,7 @@ public class TddTest {
         client.buyWithPoints();
         
         assertEquals(10, client.extraPoints);
-    }
+    }*/
     
     @Test
     public void noExtraPointsExceptionTest()
@@ -163,5 +163,17 @@ public class TddTest {
             e.printStackTrace();
             System.out.println("Wyjątek NoProducts został złapany");
         }
+    }
+    
+    @Test
+    public void buyMixedTest() {
+        client.addCashProduct(new Product("Czekoladki", 25, 2, 4));
+        client.addExtraPoints(50);
+        client.addExtraProduct(new Product("HDD", 1000, 30, 1));
+        
+        client.buyMixed();
+        
+        assertEquals(100, client.cash, 0);
+        assertEquals(20, client.extraPoints, 0);
     }
 }
