@@ -188,4 +188,17 @@ public class TddTest {
         assertEquals(expectedResult, result);
     }
 
+    @Test
+    public void printAllPurchasesSummary() {
+        String expectedResult = "Product overall occurrence: 4\n"
+                +               "Total price: 1250,00\n";
+        Product p1 = new Product("Wiertarka na przecenie", 500, 10, 1, 0.5);
+        Product p2 = new Product("Telewizor", 650, 15, 1, 0.0);
+        Product p3 = new Product("Wiertarka na przecenie", 175, 7, 2, 0.0);
+        Client c = new Client("Jan", "Miejski", "JanMiejski@bbb.pl", 100);
+        c.addCashProduct(p1); c.addCashProduct(p2); c.addCashProduct(p3);
+        
+        String result = c.printAllPurchasesSummary();
+        assertEquals(expectedResult, result);
+    }
 }
