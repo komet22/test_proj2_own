@@ -154,4 +154,10 @@ public class TddTest {
        client.addExtraProduct(productC);
        client.buyMixed();
     }
+    
+    @Test
+    public void buyWithBargain() {
+        client.addCashProduct("Wiertarka na przecenie", 350, 5, 1, 0.5);
+        assertEquals(25.0, client.cash, 0.0);
+    }
 }
