@@ -78,7 +78,7 @@ public class TddTest {
     }
     
     @Test
-    public void NoProductsExceptionTest()
+    public void noProductsExceptionTest()
     {
         try {
             client.buyWithCash();
@@ -92,7 +92,7 @@ public class TddTest {
     }
     
     @Test
-    public void NoMoneyExceptionTest()
+    public void noMoneyExceptionTest()
     {
         client.addCashProduct(productB);
         try {
@@ -136,7 +136,7 @@ public class TddTest {
     }
     
     @Test
-    public void NoExtraPointsExceptionTest()
+    public void noExtraPointsExceptionTest()
     {
         client.addExtraPoints(20);
         client.addExtraProduct(productB);
@@ -152,7 +152,7 @@ public class TddTest {
     }
     
     @Test
-    public void NoProductsExtraExceptionTest()
+    public void noProductsExtraExceptionTest()
     {
         try {
             client.buyWithPoints();
