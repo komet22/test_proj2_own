@@ -9,10 +9,10 @@ package tdd;
  *
  * @author Peasant
  */
-public class NoExtraPoints extends Exception {
+public class NoExtraPoints extends IllegalStateException {
     public NoExtraPoints()
     {
-        System.out.println("Za mało punktów");
+        super("Za mało punktów");
     }
     
 }

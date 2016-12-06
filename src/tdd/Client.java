@@ -43,12 +43,12 @@ public class Client {
     
     public void addExtraProduct(Product product)
     {
-        this.currentPurchase.addCashProduct(product);
+        this.currentPurchase.addExtraProduct(product);
     }
     
     public void removeExtraProduct(Product product)
     {
-        this.currentPurchase.removeCashProduct(product);
+        this.currentPurchase.removeExtraProduct(product);
     }
     
     public void addExtraPoints(int i)
@@ -61,7 +61,7 @@ public class Client {
         this.extraPoints -= i;
     }
     
-    public void buyWithCash() throws NoMoney, NoProducts
+    public void buyWithCash()
     {
         if(this.currentPurchase.productsCash.isEmpty())
             throw new NoProducts();
@@ -78,7 +78,7 @@ public class Client {
 
     }
     
-    public void buyWithPoints() throws NoExtraPoints, NoProducts
+    public void buyWithPoints()
     {
         if(this.currentPurchase.productsExtra.isEmpty())
             throw new NoProducts();

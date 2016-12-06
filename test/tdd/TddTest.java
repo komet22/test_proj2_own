@@ -79,48 +79,24 @@ public class TddTest {
         assertEquals(50.03, client.cash, 0);
     }*/
     
-    @Test
-    public void noProductsExceptionTest()
+    @Test (expected=NoProducts.class)
+    public void buyWithCashNoProducts()
     {
-        try {
-            client.buyWithCash();
-        } catch (NoMoney e) {
-            e.printStackTrace();
-            System.out.println("Wyjątek NoMoney został złapany");
-        } catch (NoProducts e) {
-            e.printStackTrace();
-            System.out.println("Wyjątek NoProducts został złapany");
-        }
+        client.buyWithCash();
     }
     
-    @Test
-    public void noMoneyExceptionTest()
+    @Test (expected=NoMoney.class)
+    public void buyWithCashNoMoney()
     {
-        client.addCashProduct(productB);
-        try {
-            client.buyWithCash();
-        } catch (NoMoney e) {
-            e.printStackTrace();
-            System.out.println("Wyjątek NoMoney został złapany");
-        } catch (NoProducts e) {
-            e.printStackTrace();
-            System.out.println("Wyjątek NoProducts został złapany");
-        }
+        client.addCashProduct(productC);
+        client.buyWithCash();
     }
-    
+
     @Test
     public void addingExtraPoints()
     {
         client.addCashProduct(productA);
-        try {
-            client.buyWithCash();
-        } catch (NoMoney e) {
-            e.printStackTrace();
-            System.out.println("Wyjątek NoMoney został złapany");
-        } catch (NoProducts e) {
-            e.printStackTrace();
-            System.out.println("Wyjątek NoProducts został złapany");
-        }
+        client.buyWithCash();
         
         assertEquals(client.extraPoints, 14);
     }
@@ -137,45 +113,28 @@ public class TddTest {
         assertEquals(10, client.extraPoints);
     }*/
     
-    @Test
-    public void noExtraPointsExceptionTest()
+    @Test (expected=NoProducts.class)
+    public void buyWithPointsNoProducts()
     {
-        client.addExtraPoints(20);
-        client.addExtraProduct(productB);
-        try {
-            client.buyWithPoints();
-        } catch (NoExtraPoints e) {
-            e.printStackTrace();
-            System.out.println("Wyjątek NoMoney został złapany");
-        } catch (NoProducts e) {
-            e.printStackTrace();
-            System.out.println("Wyjątek NoProducts został złapany");
-        }
+        client.buyWithPoints();
     }
     
-    @Test
-    public void noProductsExtraExceptionTest()
+    @Test (expected=NoExtraPoints.class)
+    public void buyWithPointsNoExtraPoints()
     {
-        try {
-            client.buyWithPoints();
-        } catch (NoExtraPoints e) {
-            e.printStackTrace();
-            System.out.println("Wyjątek NoMoney został złapany");
-        } catch (NoProducts e) {
-            e.printStackTrace();
-            System.out.println("Wyjątek NoProducts został złapany");
-        }
+        client.addExtraProduct(productA);
+        client.buyWithPoints();
     }
     
     @Test
     public void buyMixedTest() {
         client.addCashProduct(productA);
         client.addExtraPoints(50);
-        client.addExtraProduct(productC); //z jakiegoś powodu netbeans myśli, że jest tu addCashProduct
+        client.addExtraProduct(productC);
         
         client.buyMixed();
         
         assertEquals(50.03, client.cash, 0.0);
-        assertEquals(20, client.extraPoints, 0);
+        assertEquals(34, client.extraPoints, 0);
     }
 }

@@ -9,9 +9,9 @@ package tdd;
  *
  * @author Peasant
  */
-public class NoProducts extends Exception {
+public class NoProducts extends IllegalStateException {
     public NoProducts()
     {
-        System.out.println("Nie ma produktów w koszyku");
+        super("Brak produktów w koszyku");
     }
 }

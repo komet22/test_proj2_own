@@ -9,9 +9,9 @@ package tdd;
  *
  * @author Peasant
  */
-public class NoMoney extends Exception {
+public class NoMoney extends IllegalStateException {
     public NoMoney()
     {
-        System.out.println("Za mało pieniędzy");
+        super("Za mało pieniędzy");
     }
 }
