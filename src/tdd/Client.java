@@ -91,4 +91,13 @@ public class Client {
         this.previousPurchases.add(currentPurchase.getExtraProducts());
         this.currentPurchase.setExtraProducts(new HashSet<Product>());
     }
+    
+    public void buyMixed() {
+        try {
+            buyWithCash();
+            buyWithPoints();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

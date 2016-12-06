@@ -14,6 +14,7 @@ import static org.junit.Assert.*;
 public class TddTest {
     Product productA;
     Product productB;
+    Product productC;
     Purchase purchase;
     Client client;
         
@@ -21,6 +22,7 @@ public class TddTest {
     public void setUp() {
         productA = new Product("Koszulka", 49.99, 10, 3);
         productB = new Product("Buty", 60, 12, 4);
+        productC = new Product("HDD", 1000, 30, 1);
         purchase = new Purchase();
         client = new Client("Paweł", "Jaruga", "pawel.jaruga@o2.pl", 200);
         
@@ -167,13 +169,13 @@ public class TddTest {
     
     @Test
     public void buyMixedTest() {
-        client.addCashProduct(new Product("Czekoladki", 25, 2, 4));
+        client.addCashProduct(productA);
         client.addExtraPoints(50);
-        client.addExtraProduct(new Product("HDD", 1000, 30, 1));
+        client.addExtraProduct(productC); //z jakiegoś powodu netbeans myśli, że jest tu addCashProduct
         
         client.buyMixed();
         
-        assertEquals(100, client.cash, 0);
+        assertEquals(50.03, client.cash, 0.0);
         assertEquals(20, client.extraPoints, 0);
     }
 }
