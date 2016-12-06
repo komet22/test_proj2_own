@@ -43,19 +43,19 @@ public class TddTest {
     @Test
     public void addingProductToPurchase()
     {
-        purchase.add(productA);
+        purchase.addCashProduct(productA);
         
-        assertTrue(purchase.products.contains(productA));
+        assertTrue(purchase.productsCash.contains(productA));
         
     }
     
     @Test
     public void removingProductFromPurchase()
     {
-        purchase.add(productA);
-        purchase.remove(productA);
+        purchase.addCashProduct(productA);
+        purchase.removeCashProduct(productA);
         
-        assertFalse(purchase.products.contains(productA));
+        assertFalse(purchase.productsCash.contains(productA));
     }
     
     @Test
@@ -71,7 +71,7 @@ public class TddTest {
     @Test
     public void buyingProducts()
     {
-        client.addProduct(productA);
+        client.addCashProduct(productA);
         client.buyWithCash();
         
         assertEquals(50.03, client.cash, 0);
@@ -94,7 +94,7 @@ public class TddTest {
     @Test
     public void NoMoneyExceptionTest()
     {
-        client.addProduct(productB);
+        client.addCashProduct(productB);
         try {
             client.buyWithCash();
         } catch (NoMoney e) {
@@ -104,14 +104,12 @@ public class TddTest {
             e.printStackTrace();
             System.out.println("Wyjątek NoProducts został złapany");
         }
-        
-        assertEquals(client.cash, 200, 0);
     }
     
     @Test
     public void addingExtraPoints()
     {
-        client.addProduct(productA);
+        client.addCashProduct(productA);
         try {
             client.buyWithCash();
         } catch (NoMoney e) {
@@ -129,7 +127,7 @@ public class TddTest {
     @Test
     public void buyingProductsWithExtraPoints()
     {
-        client.addProduct(productA);
+        client.addExtraProduct(productA);
         client.addExtraPoints(40);
         
         client.buyWithPoints();
@@ -141,7 +139,7 @@ public class TddTest {
     public void NoExtraPointsExceptionTest()
     {
         client.addExtraPoints(20);
-        client.addProduct(productB);
+        client.addExtraProduct(productB);
         try {
             client.buyWithPoints();
         } catch (NoExtraPoints e) {

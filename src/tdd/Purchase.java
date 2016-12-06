@@ -12,28 +12,40 @@ import java.util.HashSet;
  * @author Peasant
  */
 public class Purchase {
-    HashSet<Product> products;
+    HashSet<Product> productsCash;
+    HashSet<Product> productsExtra;
     
     public Purchase()
     {
-        products = new HashSet<>();
+        productsCash = new HashSet<>();
+        productsExtra = new HashSet<>();
     }
     
-    public void add(Product product)
+    public void addCashProduct(Product product)
     {
-        this.products.add(product);
+        this.productsCash.add(product);
     }
     
-    public void remove(Product product)
+    public void removeCashProduct(Product product)
     {
-        this.products.remove(product);
+        this.productsCash.remove(product);
+    }
+    
+    public void addExtraProduct(Product product)
+    {
+        this.productsExtra.add(product);
+    }
+    
+    public void removeExtraProduct(Product product)
+    {
+        this.productsExtra.remove(product);
     }
     
     public double getPrice()
     {
         double price = 0;
         
-        for(Product p : this.products)
+        for(Product p : this.productsCash)
         {
             price += p.price * p.quantity;
         }
@@ -45,7 +57,7 @@ public class Purchase {
     {
         int price = 0;
         
-        for(Product p : this.products)
+        for(Product p : this.productsExtra)
         {
             price += p.extraPointPrice * p.quantity;
         }

@@ -15,7 +15,7 @@ public class Client {
     String email;
     double cash;
     int extraPoints;
-    Purchase purchase;
+    Purchase currentPurchase;
     
     public Client(String fname, String lname, String email, double cash)
     {
@@ -23,18 +23,28 @@ public class Client {
         this.lastName = lname;
         this.email = email;
         this.cash = cash;
-        this.purchase = new Purchase();
+        this.currentPurchase = new Purchase();
         this.extraPoints = 0;
     }
     
-    public void addProduct(Product product)
+    public void addCashProduct(Product product)
     {
-        this.purchase.add(product);
+        this.currentPurchase.addCashProduct(product);
     }
     
-    public void removeProduct(Product product)
+    public void removeCashProduct(Product product)
     {
-        this.purchase.remove(product);
+        this.currentPurchase.removeCashProduct(product);
+    }
+    
+    public void addExtraProduct(Product product)
+    {
+        this.currentPurchase.addCashProduct(product);
+    }
+    
+    public void removeExtraProduct(Product product)
+    {
+        this.currentPurchase.removeCashProduct(product);
     }
     
     public void addExtraPoints(int i)
@@ -49,30 +59,30 @@ public class Client {
     
     public void buyWithCash() throws NoMoney, NoProducts
     {
-        if(this.purchase.products.isEmpty())
+        if(this.currentPurchase.productsCash.isEmpty())
             throw new NoProducts();
 
-        double price = this.purchase.getPrice();
+        double price = this.currentPurchase.getPrice();
         if(price > this.cash)
             throw new NoMoney();
 
         this.cash -= price;
         if(price >= 50)
             this.addExtraPoints((int)price/10);
-        this.purchase = new Purchase();
+        this.currentPurchase = new Purchase();
 
     }
     
     public void buyWithPoints() throws NoExtraPoints, NoProducts
     {
-        if(this.purchase.products.isEmpty())
+        if(this.currentPurchase.productsExtra.isEmpty())
             throw new NoProducts();
 
-        int price = this.purchase.getExtraPrice();
+        int price = this.currentPurchase.getExtraPrice();
         if(price > this.extraPoints)
             throw new NoExtraPoints();
 
         this.removeExtraPoints(price);
-        this.purchase = new Purchase();
+        this.currentPurchase = new Purchase();
     }
 }
