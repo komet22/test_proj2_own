@@ -67,7 +67,7 @@ public class Purchase {
         
         for(Product p : this.productsCash)
         {
-            price += p.price * p.quantity;
+            price += p.price * p.quantity * (1-p.bargain);
         }
         
         return price;

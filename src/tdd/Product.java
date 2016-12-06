@@ -14,12 +14,14 @@ public class Product {
     double price;
     int extraPointPrice;
     int quantity;
+    double bargain;
     
-    public Product(String name, double price, int extraPrice, int quantity)
+    public Product(String name, double price, int extraPrice, int quantity, double bargain)
     {
         this.name = name;
         this.price = price;
         this.extraPointPrice = extraPrice;
         this.quantity = quantity;
+        this.bargain = bargain;
     }
 }

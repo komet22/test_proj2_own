@@ -20,9 +20,9 @@ public class TddTest {
         
     @Before
     public void setUp() {
-        productA = new Product("Koszulka", 49.99, 10, 3);
-        productB = new Product("Buty", 60, 12, 4);
-        productC = new Product("HDD", 1000, 30, 1);
+        productA = new Product("Koszulka", 49.99, 10, 3, 0.0);
+        productB = new Product("Buty", 60, 12, 4, 0.0);
+        productC = new Product("HDD", 1000, 30, 1, 0.0);
         purchase = new Purchase();
         client = new Client("Paweł", "Jaruga", "pawel.jaruga@o2.pl", 200);
         
@@ -157,7 +157,8 @@ public class TddTest {
     
     @Test
     public void buyWithBargain() {
-        client.addCashProduct("Wiertarka na przecenie", 350, 5, 1, 0.5);
+        client.addCashProduct(new Product("Wiertarka na przecenie", 350, 5, 1, 0.5));
+        client.buyWithCash();
         assertEquals(25.0, client.cash, 0.0);
     }
 }
