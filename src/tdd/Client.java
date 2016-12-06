@@ -51,32 +51,27 @@ public class Client {
     {
         if(this.purchase.products.isEmpty())
             throw new NoProducts();
-        else
-        {
-            double price = this.purchase.getPrice();
-            if(price > this.cash)
-                throw new NoMoney();
-            else {
-                this.cash -= price;
-                this.addExtraPoints((int)price/10);
-                this.purchase = new Purchase();
-            }
-        }
+
+        double price = this.purchase.getPrice();
+        if(price > this.cash)
+            throw new NoMoney();
+
+        this.cash -= price;
+        this.addExtraPoints((int)price/10);
+        this.purchase = new Purchase();
+
     }
     
     public void buyWithPoints() throws NoExtraPoints, NoProducts
     {
         if(this.purchase.products.isEmpty())
             throw new NoProducts();
-        else
-        {
-            int price = this.purchase.getExtraPrice();
-            if(price > this.extraPoints)
-                throw new NoExtraPoints();
-            else {
-                this.removeExtraPoints(price);
-                this.purchase = new Purchase();
-            }
-        }
+
+        int price = this.purchase.getExtraPrice();
+        if(price > this.extraPoints)
+            throw new NoExtraPoints();
+
+        this.removeExtraPoints(price);
+        this.purchase = new Purchase();
     }
 }

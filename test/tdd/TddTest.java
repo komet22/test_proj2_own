@@ -104,6 +104,8 @@ public class TddTest {
             e.printStackTrace();
             System.out.println("Wyjątek NoProducts został złapany");
         }
+        
+        assertEquals(client.cash, 200, 0);
     }
     
     @Test
@@ -123,6 +125,7 @@ public class TddTest {
         assertEquals(client.extraPoints, 14);
     }
     
+    //Nieaktualne od iteracji 10 - nieobsługiwane wyjątki
     @Test
     public void buyingProductsWithExtraPoints()
     {
