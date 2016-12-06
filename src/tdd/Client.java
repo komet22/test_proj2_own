@@ -7,6 +7,7 @@ package tdd;
 
 import java.util.HashSet;
 import java.util.ArrayList;
+import java.util.Iterator;
 /**
  *
  * @author Peasant
@@ -109,4 +110,21 @@ public class Client {
             buyWithPoints();
         }
     }    
+    
+    public String printAllPurchasesSummary() {
+        double totalPrice = 0.0;
+        int occurence = 0;
+	Iterator<HashSet> it1 = previousPurchases.iterator();
+	while (it1.hasNext()) {
+            HashSet hs = it1.next();
+            Iterator<Product> it2 = hs.iterator();
+            while (it2.hasNext()) {
+                Product p = it2.next();
+                occurence += p.quantity;
+                totalPrice += p.price*p.quantity*(1-p.bargain); 
+            }
+	}  
+        return "Product overall occurrence: "+ occurence +"\n"
+        +      "Total price: "+ totalPrice +"\n";
+    }
 }
